@@ -1,0 +1,108 @@
+reader:
+    name: cyclobs_l2_gridded_nc
+    short_name: CyclObs L2 gridded NetCDF4
+    long_name: IFREMER CyclObs Level 2 gridded (NetCDF4)
+    description: IFREMER CyclObs Level 2 gridded format data reader.
+    reader: !!python/name:satpy.readers.yaml_reader.FileYAMLReader
+    sensors: [sar-c]
+
+file_types:
+    sar-c:
+        # Ex1: s1a-ew-owi-cm-20141017t102553-20141017t102955-000003-0033E8_ll_gd.nc
+        # Ex2: rs2--owi-cm-20120814t013918-20120814t014034-00003-52C09_ll_gd.nc
+        file_reader: !!python/name:satpy.readers.cyclobs_l2_gridded_nc.CyclObsL2GriddedNCFileHandler
+        file_patterns:
+            - '{platform_shortname:3s}-{mode:2s}-{product_shortname:3s}-{wavelength:2s}-{start_time:%Y%m%dt%H%M%S}-{end_time:%Y%m%dt%H%M%S}-{orbit:6d}-{mission_id:6s}_{product_type}.nc'
+            - '{platform_shortname:3s}--{product_shortname:3s}-{wavelength:2s}-{start_time:%Y%m%dt%H%M%S}-{end_time:%Y%m%dt%H%M%S}-{orbit:5d}-{mission_id:5s}_{product_type}.nc'
+
+datasets:
+    heterogeneity_mask:
+        name: heterogeneity_mask
+        file_type: sar-c
+        sensor: sar-c
+        file_key: heterogeneity_mask
+        standard_name: heterogeneity_mask
+
+    incidence_angle:
+        name: incidence_angle
+        file_type: sar-c
+        sensor: sar-c
+        file_key: incidence_angle
+        standard_name: incidence_angle
+
+    wind_from_direction:
+        name: wind_from_direction
+        file_type: sar-c
+        sensor: sar-c
+        file_key: wind_from_direction
+        standard_name: wind_from_direction
+
+    nrcs_co:
+        name: nrcs_co
+        file_type: sar-c
+        sensor: sar-c
+        file_key: nrcs_co
+        standard_name: nrcs_co
+
+    mask_flag:
+        name: mask_flag
+        file_type: sar-c
+        sensor: sar-c
+        file_key: mask_flag
+        standard_name: mask_flag
+    
+    wind_streaks_orientation:
+        name: wind_streaks_orientation
+        file_type: sar-c
+        sensor: sar-c
+        file_key: wind_streaks_orientation
+        standard_name: wind_streaks_orientation
+
+    heading_angle:
+        name: heading_angle
+        file_type: sar-c
+        sensor: sar-c
+        file_key: heading_angle
+        standard_name: heading_angle
+
+    nrcs_cross:
+        name: nrcs_cross
+        file_type: sar-c
+        sensor: sar-c
+        file_key: nrcs_cross
+        standard_name: nrcs_cross
+
+    wind_speed:
+        name: wind_speed
+        file_type: sar-c
+        sensor: sar-c
+        file_key: wind_speed
+        standard_name: wind_speed
+
+    elevation_angle:
+        name: elevation_angle
+        file_type: sar-c
+        sensor: sar-c
+        file_key: elevation_angle
+        standard_name: elevation_angle
+
+    wind_streaks_orientation_stddev:
+        name: wind_streaks_orientation_stddev
+        file_type: sar-c
+        sensor: sar-c
+        file_key: wind_streaks_orientation_stddev
+        standard_name: wind_streaks_orientation_stddev
+
+    nrcs_detrend_co:
+        name: nrcs_detrend_co
+        file_type: sar-c
+        sensor: sar-c
+        file_key: nrcs_detrend_co
+        standard_name: nrcs_detrend_co
+
+    spatial_ref:
+        name: spatial_ref
+        file_type: sar-c
+        sensor: sar-c
+        file_key: spatial_ref
+        standard_name: spatial_ref
