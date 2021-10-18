@@ -104,7 +104,7 @@ class CyclObsL2GriddedNCFileHandler(NetCDF4FileHandler):
             'end_time': self.end_time,
         })
         metadata.update(self[info.get('file_key')].variable.attrs)
-        metadata.update({'global_attributes': self['/attr']})
+        metadata.update({'global_attributes': self['/attrs']})
 
         return metadata
 
